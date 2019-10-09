@@ -2,7 +2,7 @@ public class ContoBancario {
     private double ContoCorrente;
     private String intestatario;
     private static int counter;
-    private int NumeroConto;
+    private final int NumeroConto;
 
     /**
     Costruttore con parametro di tipo Stringa che contiente nome e cognome dell'intestatario.
@@ -35,11 +35,7 @@ public class ContoBancario {
     @param importo La quantità di denaro da trasferire.
     @param c Il conto su cui trasferire il denaro.
     */
-<<<<<<< HEAD
-    public void trasferisci(double importo, ContoCorrente c) {
-=======
     public void trasferisci(double importo, ContoBancario c) {
->>>>>>> prove
         if (this.ContoCorrente >= importo) {
             this.ContoCorrente -= importo;
             c.ContoCorrente += importo;
