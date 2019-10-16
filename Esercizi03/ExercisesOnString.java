@@ -21,13 +21,18 @@ public class ExercisesOnString {
     }
 
     public static int contaOccorrenze(String text, String pattern) {
-        String[] s = text.split(pattern);
+        int count = 0;
+        int l = pattern.length();
 
-        return s.length-1;
+        for (int i = 0; i < text.length() - l + 1; i++)
+            if (pattern.equals(text.substring(i, i+l)))
+                count++;
+
+        return count;
     }
 
     public static boolean isValidEmail(String email) {
-        return email.matches("(.)*@(.*)\\.(it|com|net|edu|gov|fr|de)");
+        return email.matches("(\\w+)@(\\w+)(\\.\\w+)*\\.([a-z]{2}|com|edu|gov)");
     }
 
     public static boolean isValidEmail2(String email) {
@@ -37,19 +42,19 @@ public class ExercisesOnString {
     public static String fibonacciWord(int n) {
         String t = "";
         String z = "";
-        StringBuilder s = new StringBuilder("");
+        StringBuilder s = new StringBuilder();
 
         for (int i = 1; i <= n; i++) {
             if (i == 1)
                 t = "b";
             else if (i == 2)
                 z = "a";
+            else if (i == 3)
+                s.append(z+t);
             else {
-                s = new StringBuilder("");
+                t = s.toString();
                 s.append(z);
-                s.append(t);
-                t = z;
-                z = s.toString();
+                z = t;
             }
         }
 
@@ -57,14 +62,12 @@ public class ExercisesOnString {
     }
 
     public static String randomString(int a, int n) {
-        String s = "";
+        StringBuilder s = new StringBuilder();
 
-        for (int i = 0; i < n; i++) {
-            double f = Math.random()/Math.nextDown(1.0);
-            s += (char)('a' + (a*f));
-        }
-        
-        return s;
+        for (int i = 0; i < n; i++)
+            s.append((char)('0' + Math.random()*a));
+
+        return s.toString();
     }
 
     public static int sumOfDigits(int n) {
@@ -80,19 +83,12 @@ public class ExercisesOnString {
         if (s.length() != t.length())
             return false;
         
-        int[] index = new int[s.length()];
+        StringBuilder t1 = new StringBuilder(t);
+        for (int i = 0; i < s.length(); i++)
+            if (t1.indexOf(s.substring(i,i+1)) != -1)
+                t1.deleteCharAt(t1.indexOf(s.substring(i,i+1)));
 
-        int j = 0;
-        for (int i = 0; i < s.length(); i++) {
-            while (j != -1 && index[j] != 0)
-                j = t.indexOf(s.charAt(i), j+1);
-            if (j == -1)
-                return false;
-            index[j]++;
-            j = 0;
-        }
-
-        return true;
+        return t1.toString().equals("") ? true : false;
     }
 
     public static String eliminaVocali(String s) {
@@ -102,15 +98,15 @@ public class ExercisesOnString {
     public static String stringCapitalize(String s) {
         StringBuilder t = new StringBuilder(s);
 
-        for(int i = 0; i < t.length()-1; i++)
-            if((t.charAt(i) == ' ' || i == 0) && t.charAt(i+1) <= 'z' && t.charAt(i+1) >= 'a')
-                t.setCharAt(i+1, (char)(t.charAt(i+1) + 'A'-'a'));
+        for (int i = 0; i < s.length(); i++)
+            if (i == 0 || s.charAt(i-1) == ' ')
+                t.replace(i, i+1, s.substring(i, i+1).toUpperCase());
 
         return t.toString();
     }
 
     public static String unaryOf(int n) {
-        StringBuilder s = new StringBuilder("");
+        StringBuilder s = new StringBuilder(3);
 
         for (int i = 0; i < n; i++)
             s.append(0);
@@ -119,6 +115,9 @@ public class ExercisesOnString {
     }
 
     public static void main(String[] args) {
-        System.out.println(randomString(6, 10));
+        Scanner scan = new Scanner(System.in);
+        String text = scan.nextLine();
+        String pattern = scan.nextLine();
+        System.out.println(contaOccorrenze(text, pattern));
     }
 }
