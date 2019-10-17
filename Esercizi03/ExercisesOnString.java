@@ -87,8 +87,10 @@ public class ExercisesOnString {
         for (int i = 0; i < s.length(); i++)
             if (t1.indexOf(s.substring(i,i+1)) != -1)
                 t1.deleteCharAt(t1.indexOf(s.substring(i,i+1)));
+            else
+                return false;
 
-        return t1.toString().equals("") ? true : false;
+        return true;
     }
 
     public static String eliminaVocali(String s) {
