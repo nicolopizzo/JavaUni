@@ -11,7 +11,6 @@ public class Person {
         return "Hi! I'm " + firstName + " " + lastName;
     }
 
-    @override
     public String toString() {
         return "Name: " + firstName + "\nLast Name: " + lastName;
     }

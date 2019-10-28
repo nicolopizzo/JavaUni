@@ -8,13 +8,13 @@ public final class Student extends Person {
         this.number = number;
     }
 
-    @override
+    
     public String presentation() {
-        return super.presentation() + "and I study at " + university;
+        return super.presentation() + " and I study at " + university;
     }
 
-    @override
+    
     public String toString() {
-        return super + "\nUniversity: " + university + "\nNumber: " + number;
+        return super.toString() + "\nUniversity: " + university + "\nNumber: " + number;
     }
 }

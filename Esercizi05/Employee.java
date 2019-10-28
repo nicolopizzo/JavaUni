@@ -9,11 +9,11 @@ public class Employee extends Person {
     }
 
     public String presentation() {
-        return super.presentation() + "and I work at " + workingPlace;
+        return super.presentation() + " and I work at " + workingPlace;
     }
 
     public String toString() {
-        return super + "\nWorking Place: " + workingPlace + "\nSalary: " + salary;
+        return super.toString() + "\nWorking Place: " + workingPlace + "\nSalary: " + salary;
     }
 
 }

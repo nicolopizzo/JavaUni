@@ -24,7 +24,7 @@ public class Trapeze extends Quadrilateral {
     }
 
     public double getArea() {
-
+        return super.getArea();
     }
 
     public double getPerimeter() {
