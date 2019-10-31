@@ -14,7 +14,7 @@ public class Point {
     }
 
     public double coeffTo(Point p) {
-        return (this.y - p.y)/(this.x - p.x);
+        return Double.isInfinite((this.y - p.y)/(this.x - p.x)) ? Double.POSITIVE_INFINITY : (this.y - p.y)/(this.x - p.x);
     }
 
     public boolean alignedTo(Point p) {

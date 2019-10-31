@@ -5,7 +5,8 @@ public class Square extends Rectangle {
 
     public Square(Point[] points) {
         super(points);
-        this.side = super.basis;
+        if(isSquare(points))
+            this.side = super.basis;
     }
 
     public double getPerimeter() {
@@ -14,5 +15,9 @@ public class Square extends Rectangle {
 
     public double getArea() {
         return this.side*this.side;
+    }
+
+    private boolean isSquare(Point[] points) {
+        return points[0].distanceFrom(points[1]) == points[1].distanceFrom(points[2]);
     }
 }

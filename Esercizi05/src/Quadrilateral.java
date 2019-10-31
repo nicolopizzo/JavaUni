@@ -21,6 +21,7 @@ public class Quadrilateral {
 
     public double getArea() {
         double s1, s2;
+        s1 = s2 = 0;
 
         for (int i = 0; i < points.length; i++) {
             s1 += points[i].x * points[(i+1)%4].y;
@@ -31,7 +32,7 @@ public class Quadrilateral {
     }
 
     public static double averageArea(Quadrilateral[] q) {
-        double s;
+        double s = 0;
 
         for (Quadrilateral q1 : q)
             s += q1.getArea();
@@ -39,10 +40,7 @@ public class Quadrilateral {
         return s/q.length;
     }
 
-    boolean isQuadrilateral() {
-        if (this.points[2].coeffTo(this.points[3]) >= this.points[3].coeffTo(this.points[0]) && this.points[2].coeffTo(this.points[3]) <= this.points[1].coeffTo(this.points[2]));
-            return false;
-
-        return true;
+    boolean isQuadrilateral(Point[] points) {
+        return !(points[2].coeffTo(points[3]) >= points[3].coeffTo(points[0]) && points[2].coeffTo(points[3]) <= points[1].coeffTo(points[2]));
     }
 }
