@@ -28,4 +28,17 @@ public class Paper extends Document {
     public String toString() {
         return "Paper: " + this.title + ", Authors: " + this.authors + ", Category: " + this.category;
     }
+
+    @Override
+    public int compareTo(Document d) {
+        if (d instanceof Book) {
+            return this.authors.get(0).compareTo(((Book) d).authors.get(0));
+        }
+        else if (d instanceof Paper) {
+            return this.authors.get(0).compareTo(((Paper) d).authors.get(0));
+        }
+        else
+            return -1;
+    }
+
 }

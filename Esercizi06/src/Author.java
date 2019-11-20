@@ -1,9 +1,9 @@
 package library;
 import java.util.*;
 
-public class Author {
-    public String name;
-    public String surname;
+public class Author implements Comparable<Author>{
+    String name;
+    String surname;
 
     public Author(String name, String surname) {
         this.name = name;
@@ -20,5 +20,10 @@ public class Author {
             return true;
 
         return false;
+    }
+
+    @Override
+    public int compareTo(Author a) {
+        return this.surname.compareTo(a.surname);
     }
 }

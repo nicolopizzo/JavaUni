@@ -221,4 +221,102 @@ public class Library {
         else
             System.out.println("You cannot edit this attribute.");
     }
+
+    public void sortByTitle() {
+        Collections.sort(this.documents, new Comparator<Document>() {
+            @Override
+            public int compare(Document d1, Document d2) {
+                if (d1 instanceof Book && d2 instanceof Book)
+                    return ((Book) d1).title.compareTo(((Book) d2).title);
+                else if (d1 instanceof Book && d2 instanceof Paper)
+                    return ((Book) d1).title.compareTo(((Paper) d2).title);
+                else if (d1 instanceof Paper && d2 instanceof Book)
+                    return ((Paper) d1).title.compareTo(((Book) d2).title);
+                else if (d1 instanceof Paper && d2 instanceof Paper)
+                    return ((Paper) d1).title.compareTo(((Paper) d2).title);
+                else if (d1 instanceof Book || d1 instanceof Paper)
+                    return 1;
+                else if (d2 instanceof Book || d2 instanceof Paper)
+                    return -1;
+                else
+                    return 0;
+            }
+        });
+    }
+
+    public void sortByAuthorName() {
+        Collections.sort(this.documents, new Comparator<Document>() {
+            @Override
+            public int compare(Document d1, Document d2) {
+                if (d1 instanceof Book && d2 instanceof Book)
+                    return ((Book) d1).authors.get(0).name.compareTo(((Book) d2).authors.get(0).name);
+                else if (d1 instanceof Book && d2 instanceof Paper)
+                    return ((Book) d1).authors.get(0).name.compareTo(((Paper) d2).authors.get(0).name);
+                else if (d1 instanceof Paper && d2 instanceof Book)
+                    return ((Paper) d1).authors.get(0).name.compareTo(((Book) d2).authors.get(0).name);
+                else if (d1 instanceof Paper && d2 instanceof Paper)
+                    return ((Paper) d1).authors.get(0).name.compareTo(((Paper) d2).authors.get(0).name);
+                else if (d1 instanceof Book || d1 instanceof Paper)
+                    return 1;
+                else if (d2 instanceof Book || d2 instanceof Paper)
+                    return -1;
+                else    
+                    return 0;
+            }
+        });
+    }
+
+    public void sortByAuthorSurname() {
+        Collections.sort(this.documents, new Comparator<Document>() {
+            @Override
+            public int compare(Document d1, Document d2) {
+                if (d1 instanceof Book && d2 instanceof Book)
+                    return ((Book) d1).authors.get(0).surname.compareTo(((Book) d2).authors.get(0).surname);
+                else if (d1 instanceof Book && d2 instanceof Paper)
+                    return ((Book) d1).authors.get(0).surname.compareTo(((Paper) d2).authors.get(0).surname);
+                else if (d1 instanceof Paper && d2 instanceof Book)
+                    return ((Paper) d1).authors.get(0).surname.compareTo(((Book) d2).authors.get(0).surname);
+                else if (d1 instanceof Paper && d2 instanceof Paper)
+                    return ((Paper) d1).authors.get(0).surname.compareTo(((Paper) d2).authors.get(0).surname);
+                else if (d1 instanceof Book || d1 instanceof Paper)
+                    return 1;
+                else if (d2 instanceof Book || d2 instanceof Paper)
+                    return -1;
+                else    
+                    return 0;
+            }
+        });
+    }
+
+    public void sortByEditor() {
+        Collections.sort(this.documents, new Comparator<Document>() {
+            @Override
+            public int compare(Document d1, Document d2) {
+                if (d1 instanceof Book && d2 instanceof Book)
+                    return ((Book) d1).editor.compareTo(((Book) d2).editor);
+                else if (d1 instanceof Book)
+                    return 1;
+                else if (d2 instanceof Book)
+                    return -1;
+                else
+                    return 0;
+            }
+        });
+    }
+
+    public void sortByDate() {
+        Collections.sort(this.documents, new Comparator<Document>() {
+            @Override
+            public int compare(Document d1, Document d2) {
+                if (d1 instanceof Newspaper && d2 instanceof Newspaper)
+                    return ((Newspaper) d1).date.compareTo(((Newspaper) d2).date);
+                else if (d1 instanceof Newspaper)
+                    return 1;
+                else if (d2 instanceof Newspaper)
+                    return -1;
+                else
+                    return 0;
+            }
+        });
+    }
 }
