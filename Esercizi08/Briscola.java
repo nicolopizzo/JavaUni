@@ -47,7 +47,7 @@ public class Briscola {
         if (turnWon) {
             if (p.getBriscolaValue() >= c.getBriscolaValue()) {
                 //if the cpu has briscola and the player does not, the cards go to the CPU
-                if ((isBriscola(c) && !isBriscola(p)) || (c.getSuit().equals(mainSuit) && c.getValue() > p.getValue()))
+                if ((isBriscola(c) && !isBriscola(p)) || (c.getSuit().equals(mainSuit) && c.getValue() > p.getValue() && p.getBriscolaValue() == c.getBriscolaValue()) )
                     winsCPU(p, c);
                 
                 else
@@ -79,7 +79,7 @@ public class Briscola {
             }
             
             else {
-                if ((isBriscola(p) && !isBriscola(c)) || (p.getSuit().equals(mainSuit) && p.getValue() > c.getValue()))
+                if ((isBriscola(p) && !isBriscola(c)) || (p.getSuit().equals(mainSuit) && p.getValue() > c.getValue() && p.getBriscolaValue() == c.getBriscolaValue()))
                     winsPlayer(p, c);
                     
                 else
